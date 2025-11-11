@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import streamlit as st
 from langchain_groq import ChatGroq
-from langchain_community.chat_models import ChatOllama
+
 
 # ==========================================================
 # Configuration
@@ -54,7 +54,7 @@ def load_model(provider_name: str, model_name: str):
     """Returns the appropriate model according to the selected provider."""
     if provider_name == "Groq":
         return ChatGroq(model=model_name, temperature=0.0)
-    elif provider_name in ["OpenAI", "Gemini", "ollama"]:
+    elif provider_name in ["OpenAI", "Gemini", "Ollama"]:
         st.warning(f"🚫 Provider **{provider_name}** currently unavailable.")
         return None
     else:
@@ -108,3 +108,4 @@ st.markdown("""
 - Use the clear chat button to restart the conversation.
 
 """)
+
