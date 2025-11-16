@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import streamlit as st
 from langchain_groq import ChatGroq
-
+from langchain_google_genai import ChatGoogleGenerativeAI 
 
 # ==========================================================
 # Configuration
@@ -27,7 +27,7 @@ model_options = {
 provider = st.selectbox("Select provider:", list(model_options.keys()))
 
 # Detect whether the provider is available
-provider_disponible = provider == "Groq"
+provider_disponible = provider in ["Groq", "Gemini"]
 
 # Model dropdown (disabled if not available)
 model = st.selectbox(
@@ -54,7 +54,9 @@ def load_model(provider_name: str, model_name: str):
     """Returns the appropriate model according to the selected provider."""
     if provider_name == "Groq":
         return ChatGroq(model=model_name, temperature=0.0)
-    elif provider_name in ["OpenAI", "Gemini", "Ollama"]:
+    elif provider_name == "Gemini":
+        return ChatGoogleGenerativeAI(model=model_name, temperature=0.0)
+    elif provider_name in ["OpenAI", "Ollama"]:
         st.warning(f"🚫 Provider **{provider_name}** currently unavailable.")
         return None
     else:
@@ -102,10 +104,11 @@ if st.button("Clear Chat"):
 st.markdown("""
 ---
 **Tips:**
-- Only **Groq** and **Ollama** providers are currently active.
-- The **OpenAI** and **Gemini** providers will display a warning and disable inputs.
+- **Groq**, **Ollama**, and **Gemini** providers are currently active.
+- The **OpenAI** provider will display a warning and disable inputs.
 - **Ollama** must be used locally.
 - Use the clear chat button to restart the conversation.
 
 """)
+
 
