@@ -8,8 +8,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 # ==========================================================
 load_dotenv()
 
-st.set_page_config(page_title="Multimodel Chatbot", page_icon="🤖", layout="centered")
-st.title("🤖 Multimodal chatbot with Streamlit")
+st.set_page_config(page_title="Multi-model Chatbot", page_icon="🤖", layout="centered")
+st.title("🤖 Chatbot")
 
 # ==========================================================
 # Provider and model options
@@ -110,5 +110,6 @@ st.markdown("""
 - Use the clear chat button to restart the conversation.
 
 """)
+
 
 
