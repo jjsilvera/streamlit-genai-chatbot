@@ -16,7 +16,7 @@ st.title("🤖 Chatbot")
 # ==========================================================
 model_options = {
     "OpenAI": ["gpt-3.5-turbo", "gpt-4.1"],
-    "Gemini": ["gemini-2.5-pro", "gemini-2.5-flash"],
+    "Gemini": ["gemini-2.5-flash"],
     "Groq": ["llama-3.1-8b-instant", "llama-3.3-70b-versatile"],
     "Ollama": ["qwen2.5:3b"]
 }
@@ -110,6 +110,7 @@ st.markdown("""
 - Use the clear chat button to restart the conversation.
 
 """)
+
 
 
 
